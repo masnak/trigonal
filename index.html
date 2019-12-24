@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trig Functin Graph</title>
     <script>
-        var ctx, degree=0;
+        var ctx, degree=30;
         function init() {
             var canvas = document.getElementById("graph");
             ctx = canvas.getContext("2d");
@@ -60,9 +60,9 @@
     </script>
 </head>
 <body onload="init()">
-    <input id="theta" type="range" min="0" max="360" value="45"
+    <input id="theta" type="range" min="0" max="360" value="30"
     onchange="update()" />
-    中心角=<span id="degree">0</span>度
+    中心角=<span id="degree">30</span>度
     <br>
     <canvas id="graph" width="600" height="600"></canvas>    
 </body>
