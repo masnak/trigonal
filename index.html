@@ -6,72 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trig Functin Graph</title>
     <script>
-    var ctx, degree=0;
+    let context, degree=0;
 
-    function init() {
-        var canvas = document.getElementById("graph");
-        ctx = canvas.getContext("2d");
-        ctx.font = "24px sans-serif";
+    const init =()=> {
+        let canvas = document.getElementById("graph");
+        context = canvas.getContext("2d");
+        context.font = "24px sans-serif";
         setInterval(tick, 10);
     }
     
-    function tick() {
-        degree++;
+    const tick =()=> {
+        degree--;
         paint();
     }
 
-    function drawLine(x0, y0, x1, y1, color) {
-        ctx.srokeStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(x0, y0);
-        ctx.lineTo(x1, y1);
-        ctx.closePath();
-        ctx.stroke();
+    const drawLine =(x0, y0, x1, y1, color)=> {
+        context.strokeStyle = color;
+        context.beginPath();
+        context.moveTo(x0, y0);
+        context.lineTo(x1, y1);
+        context.closePath();
+        context.stroke();
     }
 
-    function paint() {
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, 600, 600);
-        ctx.save();
-        ctx.translate(100, 100);
+    const paint =()=> {
+        context.fillStyle = "white";
+        context.fillRect(0, 0, 600, 600);
+        context.save();
+        context.translate(100, 100);
 
         drawLine(0, -100, 0, 500, "black");
         drawLine(-100, 0, 500, 0, "black");
 
-        var s0 = Math.sin(degree * Math.PI / 180);
-        var c0 = Math.cos(degree * Math.PI / 180);
-        var c = c0 * 50, s = s0 * -50;
+        let s0 = Math.sin(degree * Math.PI / 180);
+        let c0 = Math.cos(degree * Math.PI / 180);
+        let c = c0 * 50, s = s0 * -50;
 
         drawLine(0, 0, c, s, "red");
-        ctx.arc(0, 0, 50, 0, Math.PI * 2);
-        ctx.stroke();
+        context.arc(0, 0, 50, 0, Math.PI * 2);
+        context.stroke();
     
     //sin curve
-    ctx.srokeStyle = "green";
-    ctx.beginPath();
-    ctx.moveTo(c, s);
-    for (var i = 0; i < 500; i++) {
-        var s1 = Math.sin((degree + i) * Math.PI / 180) * -50;
-        ctx.lineTo(i, s1);
+    context.strokeStyle = "green";
+    context.beginPath();
+    context.moveTo(c, s);
+    for (let i = 0; i < 500; i++) {
+        let s1 = Math.sin((degree + i) * Math.PI / 180) * -50;
+        context.lineTo(i, s1);
     }
 
-    ctx.stroke();
+    context.stroke();
 
     //cos curve
-    ctx.srokeStyle = "blue";
-    ctx.beginPath();
-    ctx.moveTo(c, s);
-    for (var i = 0; i < 500; i++) {
-        var c1 = Math.cos((degree + i) * Math.PI / 180) * 50;
-        ctx.lineTo(c1, i);
+    context.strokeStyle = "blue";
+    context.beginPath();
+    context.moveTo(c, s);
+    for (let i = 0; i < 500; i++) {
+        let c1 = Math.cos((degree + i) * Math.PI / 180) * 50;
+        context.lineTo(c1, i);
     }
 
-    ctx.stroke();
-    ctx.restore();
+    context.stroke();
+    context.restore();
 
 }
-
-
     </script>
 <body onload="init()">
 <canvas id="graph" width="600" height="600"></canvas>
